@@ -6,13 +6,13 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 14:51:42 by cjad              #+#    #+#             */
-/*   Updated: 2021/12/16 18:57:07 by cjad             ###   ########.fr       */
+/*   Updated: 2021/12/17 19:52:26 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-static void free_tab(char	**tab)
+void free_tab(char	**tab)
 {
 	int	i;
 	
@@ -36,13 +36,17 @@ static char	*check_path(char	**cmd, char **paths)
 	i = 1;
 	while (access(pathtest, F_OK) && paths[i])
 	{
-		free (pathtest);
+		free(pathtest);
 		pathtest = ft_strjoin(paths[i], str);
 		i++;
 	}
 	free_tab(paths);
+	free(str);
 	if(access(pathtest, F_OK))
+	{
+		free(pathtest);
 		return (NULL);
+	}
 	return(pathtest);
 }
 
@@ -59,5 +63,6 @@ char	*find_path(char	**envp, char **cmd)
 		i++;
 	str = ft_strdup(&envp[i][5]);
 	paths = ft_split(str, ':');
+	free(str);
 	return (check_path(cmd, paths));
 }

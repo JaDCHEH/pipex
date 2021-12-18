@@ -13,5 +13,7 @@ char	*ft_strdup(const char	*s1);
 char	*ft_strjoin(char const	*s1, char const *s2);
 char	*find_path(char	**envp, char **cmd);
 void	execute_command(char   **envp, char    *command);
+void    free_tab(char	**tab);
+void pipex(int fd1, int fd2, char	**av, char	**envp);
 
 #endif

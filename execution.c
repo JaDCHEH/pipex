@@ -11,4 +11,6 @@ void execute_command(char   **envp, char    *command)
 		execve(path, cmd, envp);
 	else 
 		perror("This command doesn't exist");
+	free_tab(cmd);
+	free(path);
 }
