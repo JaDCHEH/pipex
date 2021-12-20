@@ -6,16 +6,16 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 14:51:42 by cjad              #+#    #+#             */
-/*   Updated: 2021/12/17 19:52:26 by cjad             ###   ########.fr       */
+/*   Updated: 2021/12/20 13:18:58 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void free_tab(char	**tab)
+void	free_tab(char	**tab)
 {
 	int	i;
-	
+
 	i = 0;
 	while (tab[i])
 	{
@@ -30,7 +30,7 @@ static char	*check_path(char	**cmd, char **paths)
 	char	*str;
 	char	*pathtest;
 	int		i;
-	
+
 	str = ft_strjoin("/", cmd[0]);
 	pathtest = ft_strjoin(paths[0], str);
 	i = 1;
@@ -42,21 +42,21 @@ static char	*check_path(char	**cmd, char **paths)
 	}
 	free_tab(paths);
 	free(str);
-	if(access(pathtest, F_OK))
+	if (access(pathtest, F_OK))
 	{
 		free(pathtest);
 		return (NULL);
 	}
-	return(pathtest);
+	return (pathtest);
 }
 
 char	*find_path(char	**envp, char **cmd)
 {
-	int	i;
+	int		i;
 	char	*str;
 	char	**paths;
 	int		a;
-	
+
 	i = 0;
 	a = 0;
 	while (ft_strncmp(envp[i], "PATH", 4))

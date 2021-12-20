@@ -1,14 +1,14 @@
-NAME = pipex.a
+NAME = pipex
+
+NAME_BONUS = pipex_bonus
 
 CC = @cc
 
-AR = @ar -r
-
-FLAGS = -Wall -Wextra -Werror -c 
+FLAGS = -Wall -Wextra -Werror 
 
 RM = @rm -f
 
-CFILES = execution.c \
+C_FILES = execution.c \
 			find_path.c \
 			ft_split.c \
 			ft_strdup.c \
@@ -16,37 +16,40 @@ CFILES = execution.c \
 			ft_strlen.c \
 			ft_strncmp.c \
 			ft_substr.c \
-			pipex.c \
+
+M_FILES = pipex.c \
 			main.c \
 
-
-EXEC = pipex
+B_FILES = pipex_bonus.c \
+			main_bonus.c \
 
 N_FLAG = -o
 
-OFILES = execution.o \
-			find_path.o \
-			ft_split.o \
-			ft_strdup.o \
-			ft_strjoin.o \
-			ft_strlen.o \
-			ft_strncmp.o \
-			ft_substr.o \
-			pipex.o \
-			main.o \
+#  colors
+
+C_PURPLE = \033[1;31m
+C_GREEN = \033[1;32m
+C_L_BLUE = \033[1;34m
+C_RES = \033[0m
 
 all : $(NAME)
 
-$(NAME) : $(OFILES)
-	$(CC) $(FLAGS) $(CFILES) 
-	$(AR) $(NAME) $(OFILES)	
-	$(CC) $(NAME) $(N_FLAG) $(EXEC)
+$(NAME) : $(C_FILES) $(M_FILES)
+	@echo "$(C_GREEN)["pipex" CREATED]$(C_RES)"
+	$(CC) $(FLAGS) $(C_FILES) $(M_FILES) $(N_FLAG) $(NAME)
+
+bonus : $(NAME_BONUS)
+
+$(NAME_BONUS) : $(C_FILES) $(B_FILES) $(NAME)
+	@echo "$(C_L_BLUE)["pipex" BONUS CREATED]$(C_RES)"
+	$(CC) $(FLAGS) $(C_FILES) $(B_FILES) $(N_FLAG) $(NAME_BONUS)
 
 clean :
-	$(RM) $(OFILES)
-
-fclean : clean
+	@echo "$(C_PURPLE)["pipex" REMOVED]$(C_RES)"
 	$(RM) $(NAME)
-	$(RM) $(EXEC)
+
+fclean :
+	@echo "$(C_PURPLE)["pipex" BONUS REMOVED]$(C_RES)"
+	$(RM) $(NAME_BONUS)
 
 re : fclean all
