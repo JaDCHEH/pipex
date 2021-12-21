@@ -16,12 +16,11 @@ C_FILES = execution.c \
 			ft_strlen.c \
 			ft_strncmp.c \
 			ft_substr.c \
+			pipex.c \
 
-M_FILES = pipex.c \
-			main.c \
+M_FILE = main.c \
 
-B_FILES = pipex_bonus.c \
-			main_bonus.c \
+B_FILE = main_bonus.c \
 
 N_FLAG = -o
 
@@ -34,15 +33,15 @@ C_RES = \033[0m
 
 all : $(NAME)
 
-$(NAME) : $(C_FILES) $(M_FILES)
+$(NAME) : $(C_FILES) $(M_FILE)
 	@echo "$(C_GREEN)["pipex" CREATED]$(C_RES)"
-	$(CC) $(FLAGS) $(C_FILES) $(M_FILES) $(N_FLAG) $(NAME)
+	$(CC) $(FLAGS) $(C_FILES) $(M_FILE) $(N_FLAG) $(NAME)
 
 bonus : $(NAME_BONUS)
 
-$(NAME_BONUS) : $(C_FILES) $(B_FILES)
+$(NAME_BONUS) : $(C_FILES) $(B_FILE)
 	@echo "$(C_L_BLUE)["pipex" BONUS CREATED]$(C_RES)"
-	$(CC) $(FLAGS) $(C_FILES) $(B_FILES) $(N_FLAG) $(NAME_BONUS)
+	$(CC) $(FLAGS) $(C_FILES) $(B_FILE) $(N_FLAG) $(NAME_BONUS)
 
 clean :
 	@echo "$(C_PURPLE)["pipex" REMOVED]$(C_RES)"
