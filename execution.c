@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjad <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 13:23:54 by cjad              #+#    #+#             */
-/*   Updated: 2021/12/20 13:23:55 by cjad             ###   ########.fr       */
+/*   Updated: 2021/12/21 13:15:27 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ void	execute_command(char	**envp, char	*command)
 	if (path)
 		execve(path, cmd, envp);
 	else
-		perror("This command doesn't exist");
+	{
+		perror("");
+		exit(0);
+	}
 	free_tab(cmd);
 	free(path);
 }

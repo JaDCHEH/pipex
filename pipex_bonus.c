@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 14:18:30 by cjad              #+#    #+#             */
-/*   Updated: 2021/12/20 14:57:15 by cjad             ###   ########.fr       */
+/*   Updated: 2021/12/21 13:16:02 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	pipex(char	*av1, char	**envp)
 	frk = fork();
 	if (frk < 0)
 	{
-		perror("An error occured when exectuing fork :");
+		perror("");
 		exit(0);
 	}
 	if (frk == 0)

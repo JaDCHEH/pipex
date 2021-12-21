@@ -40,7 +40,7 @@ $(NAME) : $(C_FILES) $(M_FILES)
 
 bonus : $(NAME_BONUS)
 
-$(NAME_BONUS) : $(C_FILES) $(B_FILES) $(NAME)
+$(NAME_BONUS) : $(C_FILES) $(B_FILES)
 	@echo "$(C_L_BLUE)["pipex" BONUS CREATED]$(C_RES)"
 	$(CC) $(FLAGS) $(C_FILES) $(B_FILES) $(N_FLAG) $(NAME_BONUS)
 
@@ -52,4 +52,4 @@ fclean :
 	@echo "$(C_PURPLE)["pipex" BONUS REMOVED]$(C_RES)"
 	$(RM) $(NAME_BONUS)
 
-re : fclean all
+re : clean all

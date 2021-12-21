@@ -6,7 +6,7 @@
 /*   By: cjad <cjad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 15:00:37 by cjad              #+#    #+#             */
-/*   Updated: 2021/12/20 15:11:05 by cjad             ###   ########.fr       */
+/*   Updated: 2021/12/21 13:15:53 by cjad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int ac, char	**av, char	**envp)
 		dup2(fin, 0);
 		if (fin < 0 || fout < 0)
 		{
-			perror("Couldn't fint the file");
+			perror("");
 			return (0);
 		}
 		while (a < ac - 2)
@@ -37,6 +37,6 @@ int	main(int ac, char	**av, char	**envp)
 		dup2(fout, 1);
 		execute_command(envp, av[a]);
 	}
-	perror("Invalid number of arguments");
+	write(2, "Invalid number of arguments\n", 28);
 	return (0);
 }
